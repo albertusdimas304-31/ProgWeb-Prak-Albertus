@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473031-Albertus Dimas Dwi Andriyanto</title>
+
+    <script src="jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+        }
+
+        .container {
+            width: 290px;
+            padding: 15px;
+            border: 1px solid #bdbdbd;
+            background-color: #f8f8f8;
+        }
+
+        #txtSearch {
+            width: 95%;
+            padding: 6px;
+            margin-bottom: 12px;
+        }
+
+        .company {
+            margin-bottom: 6px;
+        }
+
+        .highlight {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <input type="text" id="txtSearch">
+
+        <div id="companyList">
+
+            <div class="company">Sun Microsystem</div>
+            <div class="company">Apache Software Foundation</div>
+            <div class="company">Oracle Coorporation</div>
+            <div class="company">International Bussiness Machines</div>
+            <div class="company">Microsoft Coorporation</div>
+            <div class="company">Apple Inc</div>
+            <div class="company">Sap Ag</div>
+            <div class="company">Accenture</div>
+            <div class="company">Computer Sciences Coorporation</div>
+            <div class="company">Google</div>
+            <div class="company">Softbank</div>
+            <div class="company">Yahoo</div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        $(function () {
+
+            $("#txtSearch").on("keyup", function () {
+
+                let inputUser = $(this).val().toLowerCase();
+
+                $(".company").removeClass("highlight");
+
+                $(".company").each(function () {
+
+                    let teks = $(this).text().toLowerCase();
+
+                    if (teks.indexOf(inputUser) !== -1 && inputUser != "") {
+
+                        $(this).addClass("highlight");
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473031_Albertus Dimas Dwi Andriyanto</title>
+
+    <script src="jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 25px;
+        }
+
+        .bagian-input {
+            margin-bottom: 10px;
+        }
+
+        #txtNama {
+            width: 170px;
+            padding: 3px;
+        }
+
+        .daftar {
+            margin-top: 5px;
+        }
+
+        .daftar div {
+            margin-bottom: 4px;
+        }
+
+        .hasil-cari {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bagian-input">
+        <input type="text" id="txtNama">
+
+        <input type="button" value="Add" id="btnAdd">
+
+        <input type="button" value="Search" id="btnSearch">
+    </div>
+
+    <div class="daftar" id="listNama">
+        <div>Bill Gates</div>
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+
+    <script>
+
+        $(function () {
+
+            // Tambah nama
+            $("#btnAdd").on("click", function () {
+
+                let isiInput = $("#txtNama").val();
+
+                if (isiInput.trim() != "") {
+
+                    $("#listNama").append(
+                        "<div>" + isiInput + "</div>"
+                    );
+
+                    $("#txtNama").val("");
+                }
+
+            });
+
+            // Cari nama
+            $("#btnSearch").click(function () {
+
+                let keyword = $("#txtNama").val().toLowerCase();
+
+                $("#listNama div").removeClass("hasil-cari");
+
+                $("#listNama div").each(function () {
+
+                    let nama = $(this).text().toLowerCase();
+
+                    if (nama.includes(keyword) && keyword != "") {
+                        $(this).addClass("hasil-cari");
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

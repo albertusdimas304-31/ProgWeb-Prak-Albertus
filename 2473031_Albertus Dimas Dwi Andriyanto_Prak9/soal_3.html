@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473031-Albertus Dimas Dwi Andriyantos</title>
+
+    <script src="jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 25px;
+        }
+
+        #btnWarna {
+            margin-bottom: 0px;
+        }
+
+        .box {
+            width: 35px;
+            height: 35px;
+            border: 2px solid blue;
+            display: inline-block;
+            margin-right: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btnWarna">Change colors</button>
+
+    <br><br>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+
+        $(function () {
+
+            // Saat kotak diklik
+            $(".box").on("click", function () {
+
+                $(".box").removeClass("aktif");
+
+                $(".box").css("background-color", "white");
+
+                $(this)
+                    .addClass("aktif")
+                    .css("background-color", "red");
+
+            });
+
+            // Tombol change colors
+            $("#btnWarna").click(function () {
+
+                $(".box").each(function () {
+
+                    if ($(this).hasClass("aktif")) {
+                        return false;
+                    }
+
+                    $(this).css("background-color", "yellow");
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

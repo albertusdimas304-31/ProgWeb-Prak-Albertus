@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>2473031-Albertus Dimas Dwi Andriyanto</title>
+
+    <script src="jquery-4.0.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 30px;
+        }
+
+        .menu {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .menu > li {
+            background-color: deeppink;
+            color: white;
+            width: 100px;
+            padding: 8px;
+            margin-right: 12px;
+            position: relative;
+            cursor: pointer;
+
+        }
+
+        .submenu {
+            list-style: none;
+            padding: 0px;
+            margin: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border: 2px solid deeppink;
+            background-color: white;
+            min-width: 100%;
+        }
+        
+
+        .submenu li {
+            color: black;
+            padding: 6px;
+            text-decoration: underline;
+        }
+
+        .submenu li:hover {
+            background-color: #ffe4f1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ol class="menu">
+
+        <li>
+            jQuery
+            <ol class="submenu">
+                <li>Download</li>
+                <li>Documentation</li>
+                <li>Blog</li>
+            </ol>
+        </li>
+
+        <li>
+            Community
+            <ol class="submenu">
+                <li>Mailing List</li>
+                <li>Tutorials</li>
+                <li>Demos</li>
+                <li>Plugins</li>
+            </ol>
+        </li>
+
+        <li>
+            Development
+            <ol class="submenu">
+                <li>Source Code</li>
+                <li>Bug Tracking</li>
+                <li>Recent Changes</li>
+            </ol>
+        </li>
+
+    </ol>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".submenu").css("display", "none");
+
+            $(".menu > li").mouseenter(function () {
+                $(".submenu").slideUp(150);
+
+                $(this).children(".submenu").slideDown(150);
+            });
+
+            $(".menu > li").mouseleave(function () {
+                $(this).children(".submenu").slideUp(150);
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
