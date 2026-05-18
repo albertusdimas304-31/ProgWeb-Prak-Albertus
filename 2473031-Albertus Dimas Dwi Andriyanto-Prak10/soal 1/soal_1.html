@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>2473031-Albertus Dimas Dwi Andriyanto</title>
+
+    <script type="text/javascript" src="jquery.js"></script>
+
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 20px;
+            font-size: 15px;
+        }
+
+        .judul {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .boxPilihan {
+            border: 1px solid black;
+            width: 340px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .boxPilihan label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .boxPilihan button {
+            margin-top: 10px;
+            padding: 2px 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 550px;
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+            padding: 6px;
+        }
+
+        td {
+            padding: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="judul">
+        Selamat! Berikut adalah Daftar Mahasiswa yang mendapat
+        <br>
+        Nilai A Pemrograman Web SI Tahun Ajaran 2023/2024
+    </div>
+
+    <div class="boxPilihan">
+
+        <label>
+            <input type="radio" name="kelas" value="nilai.js" checked>
+            All
+        </label>
+
+        <label>
+            <input type="radio" name="kelas" value="nilaiA.js">
+            Kelas A
+        </label>
+
+        <label>
+            <input type="radio" name="kelas" value="nilaiB.js">
+            Kelas B
+        </label>
+        <button id="btnSearch">Search</button>
+
+    </div>
+
+    <table id="dataMahasiswa">
+
+        <thead>
+            <tr>
+                <th>NRP</th>
+                <th>NAMA</th>
+                <th>KELAS</th>
+                <th>NILAI AKHIR</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#btnSearch").click(function () {
+                var namaFile = $(":radio[name='kelas']:checked").val();
+
+                $.getJSON(namaFile, function (hasilData) {
+                    var bodyTabel = "";
+                    var isiData;
+
+                    if ($.isArray(hasilData)) {
+                        isiData = hasilData;
+                    } else {
+                        var keyPertama = Object.keys(hasilData)[0];
+                        isiData = hasilData[keyPertama];
+                    }
+
+                   $.each(isiData, function (urutan, dataMhs) {
+                        bodyTabel += "<tr>";
+                        $.each(dataMhs, function (key, value) {
+                            bodyTabel += "<td>" + value + "</td>";
+                        });
+                        bodyTabel += "</tr>";
+                    });
+
+                    $("#dataMahasiswa tbody").html(bodyTabel);
+                    $("#dataMahasiswa tbody tr:even").css("background-color", "#FFFFCC");
+                    $("#dataMahasiswa tbody tr:odd").css("background-color", "#CCFFAA");
+                })
+                .fail(function () {
+                    alert("File JSON tidak ditemukan atau gagal dibaca.");
+                });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
